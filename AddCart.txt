@@ -1,0 +1,50 @@
+public ActionResult AddCart(FormCollection frm)
+        {
+             string strPName = frm["txtPName"].ToString();
+             int strPrice = Int32.Parse(frm["txtPPrice"].ToString());
+             int strQty = Int32.Parse(frm["txtQty"].ToString());
+             List<clsItems> itemClass = new List<clsItems>();
+             List<clsItems> itemOldRecords = new List<clsItems>();
+
+               if(Session["AddCartItem"] == null)
+               {
+                   clsItems items = new clsItems()
+                   {
+                       ItemName = strPName,
+                       ItemPrice = strPrice,
+                       ItemQty = strQty
+                   };
+                   itemClass.Add(items);
+                   Session["AddCartItem"] = itemClass;
+                   return RedirectToAction("Products");
+               }
+               else
+               {
+                   foreach (clsItems itmss in (List<clsItems>)Session["AddCartItem"])
+                   {
+                       clsItems objectCls = new clsItems()
+                       {
+                           ItemName = itmss.ItemName,
+                           ItemPrice = itmss.ItemPrice,
+                           ItemQty = itmss.ItemQty
+                       };
+                       itemOldRecords.Add(objectCls);
+                   }
+
+                   clsItems itemsTwo = new clsItems()
+                   {
+                       ItemName = strPName,
+                       ItemPrice = strPrice,
+                       ItemQty = strQty
+                   };
+
+                   itemOldRecords.Add(itemsTwo);
+
+                   Session["AddCartItem"] = itemOldRecords;
+
+                   return RedirectToAction("Products");
+               }
+
+
+            
+        }
