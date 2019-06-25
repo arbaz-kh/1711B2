@@ -30,21 +30,3 @@ public ActionResult AddCart(FormCollection frm)
                        };
                        itemOldRecords.Add(objectCls);
                    }
-
-                   clsItems itemsTwo = new clsItems()
-                   {
-                       ItemName = strPName,
-                       ItemPrice = strPrice,
-                       ItemQty = strQty
-                   };
-
-                   itemOldRecords.Add(itemsTwo);
-
-                   Session["AddCartItem"] = itemOldRecords;
-
-                   return RedirectToAction("Products");
-               }
-
-
-            
-        }
