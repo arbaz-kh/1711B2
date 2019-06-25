@@ -1,6 +1,6 @@
 public ActionResult AddCart(FormCollection frm)
         {
-             string strPName = frm["txtPName"].ToString();
+             string strCName = frm["txtPName"].ToString();
              int strPrice = Int32.Parse(frm["txtPPrice"].ToString());
              int strQty = Int32.Parse(frm["txtQty"].ToString());
              List<clsItems> itemClass = new List<clsItems>();
@@ -10,7 +10,7 @@ public ActionResult AddCart(FormCollection frm)
                {
                    clsItems items = new clsItems()
                    {
-                       ItemName = strPName,
+                       ItemName = strCName,
                        ItemPrice = strPrice,
                        ItemQty = strQty
                    };
@@ -33,7 +33,7 @@ public ActionResult AddCart(FormCollection frm)
 
                    clsItems itemsTwo = new clsItems()
                    {
-                       ItemName = strPName,
+                       ItemName = strCName,
                        ItemPrice = strPrice,
                        ItemQty = strQty
                    };
